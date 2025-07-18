@@ -11,7 +11,7 @@ OPEN_API_GENERATOR_CLI_SCRIPT = "openapi-generator-cli"
 OPEN_API_GENERATOR_CONFIG_FILE = "generator_config.yaml"
 OPEN_API_GENERATOR_CONFIG_PATH = "${OPEN_API_GENERATOR_CONFIG_FILE}"
 SPEC_FILE_DOWNLOAD_DIR = "${OUTPUT_TEMP_DIR}/specdl"
-SPEC_FILE_NAME = "/home/meipeter/Downloads/api.yaml"
+SPEC_FILE_NAME = "./api.yaml"
 SPEC_FILE_PATH = "${SPEC_FILE_NAME}"
 SPEC_FILE_URL = ""
 
@@ -65,19 +65,13 @@ script = [
     "}",
 ]
 script_runner = "@rust"
-dependencies = [
-    "lib-code-generate",
-    "cargo-fix-generated",
-]
+dependencies = ["lib-code-generate", "cargo-fix-generated"]
 
 [tasks.output-dir-clean]
 description = "Setup ${LIB_NAME} output dir at ${OUTPUT_DIR}'."
 category = "openapi_lib_generator v0.2.312"
 command = "rm"
-args = [
-    "-rf",
-    "${OUTPUT_DIR}/*",
-]
+args = ["-rf", "${OUTPUT_DIR}/*"]
 
 [tasks.openapi-cli-bash-install]
 description = "Install Open API generator CLI'."
@@ -185,10 +179,7 @@ args = [
 [tasks.crate-scaffold]
 description = "Setup ${LIB_NAME} project'."
 category = "openapi_lib_generator v0.2.312"
-dependencies = [
-    "output-dir-create",
-    "output-dir-clean",
-]
+dependencies = ["output-dir-create", "output-dir-clean"]
 
 [tasks.lib-code-generate]
 description = "Generate ${LIB_NAME} code"
@@ -221,10 +212,7 @@ args = [
 description = "Check that openapi cli generator tool is installed"
 category = "openapi_lib_generator v0.2.312"
 command = "command"
-args = [
-    "-v",
-    "${OPEN_API_GENERATOR_CLI_SCRIPT}",
-]
+args = ["-v", "${OPEN_API_GENERATOR_CLI_SCRIPT}"]
 
 [tasks.output-dir-create]
 description = "Create ${LIB_NAME} output dir at ${OUTPUT_DIR}'."
@@ -235,11 +223,7 @@ command = "mkdir"
 description = "Downloads ${API_NAME} Open API specification from specified vararg'."
 category = "openapi_lib_generator v0.2.312"
 command = "wget"
-args = [
-    "${@}",
-    "-O",
-    "${SPEC_FILE_PATH}",
-]
+args = ["${@}", "-O", "${SPEC_FILE_PATH}"]
 
 [tasks.cargo-fix-generated]
 description = "Fix ${LIB_NAME} project generated code'."
@@ -261,9 +245,4 @@ args = [
 description = "A task that validates the spec"
 category = "openapi_lib_generator v0.2.312"
 command = "${OPEN_API_GENERATOR_CLI_SCRIPT}"
-args = [
-    "validate",
-    "--input-spec",
-    "${SPEC_FILE_PATH}",
-    "--recommend",
-]
+args = ["validate", "--input-spec", "${SPEC_FILE_PATH}", "--recommend"]
