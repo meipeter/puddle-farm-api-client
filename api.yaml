@@ -19,13 +19,13 @@ paths:
           required: true
           description: ID of the player to get
       responses:
-        '200':
+        "200":
           description: Successfully returned player information
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PlayerResponse'
-        '404':
+                $ref: "#/components/schemas/PlayerResponse"
+        "404":
           description: Player not found
   /player/{player_id}/{char_id}/history:
     get:
@@ -44,25 +44,58 @@ paths:
             type: string
           required: true
           description: Short name of the character (e.g., "SO" for Sol)
+        - in: query
+          name: count
+          schema:
+            type: integer
+            format: int32
+            default: 100
+          required: false
+          description: Number of matches to return (default 100)
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            format: int32
+            default: 0
+          required: false
+          description: Number of matches to skip (default 0)
       responses:
-        '200':
+        "200":
           description: Successfully returned player's match history
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PlayerGamesResponse'
-        '404':
+                $ref: "#/components/schemas/PlayerGamesResponse"
+        "404":
           description: Player or character not found
   /top:
     get:
       summary: Get top ranked players
+      parameters:
+        - in: query
+          name: count
+          schema:
+            type: integer
+            format: int32
+            default: 100
+          required: false
+          description: Number of players to return (default 100)
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            format: int32
+            default: 0
+          required: false
+          description: Number of players to skip (default 0)
       responses:
-        '200':
+        "200":
           description: Successfully returned top ranked players
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RankResponse'
+                $ref: "#/components/schemas/RankResponse"
   /top_char/{char_id}:
     get:
       summary: Get top ranked players for a specific character
@@ -73,20 +106,36 @@ paths:
             type: string
           required: true
           description: Short name of the character (e.g., "SO" for Sol)
+        - in: query
+          name: count
+          schema:
+            type: integer
+            format: int32
+            default: 100
+          required: false
+          description: Number of players to return (default 100)
+        - in: query
+          name: offset
+          schema:
+            type: integer
+            format: int32
+            default: 0
+          required: false
+          description: Number of players to skip (default 0)
       responses:
-        '200':
+        "200":
           description: Successfully returned top ranked players for the character
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RankResponse'
-        '404':
+                $ref: "#/components/schemas/RankResponse"
+        "404":
           description: Character not found
   /characters:
     get:
       summary: Get a list of all characters
       responses:
-        '200':
+        "200":
           description: Successfully returned list of characters
           content:
             application/json:
@@ -113,12 +162,12 @@ paths:
           required: false
           description: Whether to perform an exact match (true) or a partial match (false)
       responses:
-        '200':
+        "200":
           description: Successfully returned search results
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SearchResponse'
+                $ref: "#/components/schemas/SearchResponse"
   /claim/{player_id}:
     get:
       summary: Initiate a claim for a player's profile
@@ -131,13 +180,13 @@ paths:
           required: true
           description: ID of the player
       responses:
-        '200':
+        "200":
           description: Successfully initiated claim and returned a code
           content:
             application/json:
               schema:
                 type: string
-        '404':
+        "404":
           description: Player not found
   /claim/poll/{player_id}:
     get:
@@ -151,7 +200,7 @@ paths:
           required: true
           description: ID of the player
       responses:
-        '200':
+        "200":
           description: >-
             Successfully returned the status of the claim (API key if
             successful, "false" otherwise)
@@ -159,7 +208,7 @@ paths:
             application/json:
               schema:
                 type: string
-        '404':
+        "404":
           description: Player or code not found
   /settings/{key}:
     get:
@@ -172,13 +221,13 @@ paths:
           required: true
           description: Player's API key
       responses:
-        '200':
+        "200":
           description: Successfully returned player's settings
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SettingsResponse'
-        '404':
+                $ref: "#/components/schemas/SettingsResponse"
+        "404":
           description: Player not found
   /toggle_private/{key}:
     get:
@@ -191,7 +240,7 @@ paths:
           required: true
           description: Player's API key
       responses:
-        '200':
+        "200":
           description: >-
             Successfully toggled player's privacy setting and returned a
             confirmation ("true" if successful, error message otherwise)
@@ -211,7 +260,7 @@ paths:
           required: true
           description: ID of the player
       responses:
-        '200':
+        "200":
           description: Successfully returned player's aliases
           content:
             application/json:
@@ -219,9 +268,9 @@ paths:
                 type: array
                 items:
                   type: string
-        '404':
+        "404":
           description: Player not found
-  /ratings/{player_id}/{char_id}:
+  /ratings/{player_id}/{char_id}/{duration}:
     get:
       summary: Get player's rating history for a specific character
       parameters:
@@ -238,54 +287,61 @@ paths:
             type: string
           required: true
           description: Short name of the character (e.g., "SO" for Sol)
+        - in: path
+          name: duration
+          schema:
+            type: integer
+            format: int32
+          required: true
+          description: Duration in days for the rating history
       responses:
-        '200':
+        "200":
           description: Successfully returned player's rating history
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RatingsResponse'
-        '404':
+                  $ref: "#/components/schemas/RatingsResponse"
+        "404":
           description: Player or character not found
   /stats:
     get:
       summary: Get global statistics
       responses:
-        '200':
+        "200":
           description: Successfully returned global statistics
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StatsResponse'
-        '404':
+                $ref: "#/components/schemas/StatsResponse"
+        "404":
           description: Stats not found
   /popularity:
     get:
       summary: Get character popularity data
       responses:
-        '200':
+        "200":
           description: Successfully returned character popularity data
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PopularityResult'
-        '404':
+                $ref: "#/components/schemas/PopularityResult"
+        "404":
           description: Popularity data not found
   /matchups:
     get:
       summary: Get character matchup data
       responses:
-        '200':
+        "200":
           description: Successfully returned character matchup data
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MatchupResponse'
-        '404':
+                $ref: "#/components/schemas/MatchupResponse"
+        "404":
           description: Matchup data not found
-  /matchups/{player_id}/{char_id}:
+  /matchups/{player_id}/{char_id}/{duration}:
     get:
       summary: Get player's character matchup data
       parameters:
@@ -302,27 +358,134 @@ paths:
             type: string
           required: true
           description: Short name of the character (e.g., "SO" for Sol)
+        - in: path
+          name: duration
+          schema:
+            type: integer
+            format: int32
+          required: true
+          description: Duration in days for the matchup data
       responses:
-        '200':
+        "200":
           description: Successfully returned player's character matchup data
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MatchupCharResponse'
-        '404':
+                $ref: "#/components/schemas/MatchupCharResponse"
+        "404":
           description: Player or character not found
   /supporters:
     get:
       summary: Get list of supporters
       responses:
-        '200':
+        "200":
           description: Successfully returned list of supporters
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Supporter'
+                  $ref: "#/components/schemas/Supporter"
+  /distribution:
+    get:
+      summary: Get player rating distribution data
+      responses:
+        "200":
+          description: Successfully returned rating distribution data
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DistributionResponse"
+        "404":
+          description: Distribution data not found
+  /health:
+    get:
+      summary: Get health status of the system
+      responses:
+        "200":
+          description: System is healthy
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "OK"
+        "500":
+          description: System health check failed
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "No New (2m) Replays!"
+  /calc_rating:
+    get:
+      summary: Calculate rating changes for a match
+      parameters:
+        - in: query
+          name: rating_a
+          schema:
+            type: number
+            format: float
+          required: true
+          description: Player A's current rating
+        - in: query
+          name: drift_a
+          schema:
+            type: number
+            format: float
+          required: true
+          description: Player A's current drift (must be > 1.0)
+        - in: query
+          name: rating_b
+          schema:
+            type: number
+            format: float
+          required: true
+          description: Player B's current rating
+        - in: query
+          name: drift_b
+          schema:
+            type: number
+            format: float
+          required: true
+          description: Player B's current drift (must be > 1.0)
+        - in: query
+          name: a_wins
+          schema:
+            type: boolean
+          required: true
+          description: Whether player A wins the match
+      responses:
+        "200":
+          description: Successfully calculated rating changes
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CalcRatingResponse"
+        "400":
+          description: Bad request - drift values must be greater than 1
+  /avatar/{player_id}:
+    get:
+      summary: Get player's avatar image
+      parameters:
+        - in: path
+          name: player_id
+          schema:
+            type: integer
+            format: int64
+          required: true
+          description: ID of the player
+      responses:
+        "200":
+          description: Successfully returned player's avatar
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        "404":
+          description: Player not found
+        "503":
+          description: GGST is not connected
 components:
   schemas:
     PlayerResponse:
@@ -339,7 +502,7 @@ components:
           type: array
           description: Player's ratings for each character
           items:
-            $ref: '#/components/schemas/PlayerResponsePlayer'
+            $ref: "#/components/schemas/PlayerResponsePlayer"
         platform:
           type: string
           description: Player's platform (PS, XB, PC)
@@ -350,6 +513,11 @@ components:
           type: integer
           format: int32
           description: Player's top global rank
+        tags:
+          type: array
+          description: Player's tags (awards, titles, etc.)
+          items:
+            $ref: "#/components/schemas/TagResponse"
     PlayerResponsePlayer:
       type: object
       properties:
@@ -375,6 +543,10 @@ components:
           type: integer
           format: int32
           description: Player's top rank for the character
+        top_defeated:
+          $ref: "#/components/schemas/TopDefeated"
+        top_rating:
+          $ref: "#/components/schemas/TopRating"
     PlayerGamesResponse:
       type: object
       properties:
@@ -382,7 +554,14 @@ components:
           type: array
           description: Player's match history
           items:
-            $ref: '#/components/schemas/PlayerSet'
+            $ref: "#/components/schemas/PlayerSet"
+        tags:
+          type: object
+          description: Player tags indexed by player ID
+          additionalProperties:
+            type: array
+            items:
+              $ref: "#/components/schemas/TagResponse"
     PlayerSet:
       type: object
       properties:
@@ -407,7 +586,8 @@ components:
           type: string
           description: Opponent's platform (PS, XB, PC)
         opponent_id:
-          type: string
+          type: integer
+          format: int64
           description: Opponent's ID
         opponent_character:
           type: string
@@ -437,7 +617,7 @@ components:
           type: array
           description: List of player rankings
           items:
-            $ref: '#/components/schemas/PlayerRankResponse'
+            $ref: "#/components/schemas/PlayerRankResponse"
     PlayerRankResponse:
       type: object
       properties:
@@ -466,6 +646,11 @@ components:
         char_long:
           type: string
           description: Full name of the character
+        tags:
+          type: array
+          description: Player's tags (awards, titles, etc.)
+          items:
+            $ref: "#/components/schemas/TagResponse"
     SearchResponse:
       type: object
       properties:
@@ -473,7 +658,7 @@ components:
           type: array
           description: List of search results
           items:
-            $ref: '#/components/schemas/PlayerSearchResponse'
+            $ref: "#/components/schemas/PlayerSearchResponse"
     PlayerSearchResponse:
       type: object
       properties:
@@ -574,12 +759,12 @@ components:
           type: array
           description: Character popularity per player
           items:
-            $ref: '#/components/schemas/PopularityResultChar'
+            $ref: "#/components/schemas/PopularityResultChar"
         per_character:
           type: array
           description: Character popularity per character
           items:
-            $ref: '#/components/schemas/PopularityResultChar'
+            $ref: "#/components/schemas/PopularityResultChar"
         per_player_total:
           type: integer
           format: int64
@@ -610,11 +795,11 @@ components:
         data_all:
           type: array
           items:
-            $ref: '#/components/schemas/MatchupCharResponse'
+            $ref: "#/components/schemas/MatchupCharResponse"
         data_1700:
           type: array
           items:
-            $ref: '#/components/schemas/MatchupCharResponse'
+            $ref: "#/components/schemas/MatchupCharResponse"
     MatchupCharResponse:
       type: object
       properties:
@@ -625,7 +810,7 @@ components:
         matchups:
           type: array
           items:
-            $ref: '#/components/schemas/MatchupEntry'
+            $ref: "#/components/schemas/MatchupEntry"
     MatchupEntry:
       type: object
       properties:
@@ -650,7 +835,7 @@ components:
         tags:
           type: array
           items:
-            $ref: '#/components/schemas/TagResponse'
+            $ref: "#/components/schemas/TagResponse"
     TagResponse:
       type: object
       properties:
@@ -658,3 +843,92 @@ components:
           type: string
         style:
           type: string
+    DistributionResponse:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: Timestamp of the distribution data
+        data:
+          $ref: "#/components/schemas/DistributionEntry"
+    DistributionEntry:
+      type: object
+      properties:
+        distribution_floor:
+          type: array
+          items:
+            type: array
+            items:
+              type: integer
+              format: int64
+          description: Distribution data by floor
+        one_month_players:
+          type: integer
+          format: int64
+          description: Number of players in the last month
+        distribution_rating:
+          type: array
+          items:
+            type: object
+          description: Rating distribution results
+    CalcRatingResponse:
+      type: object
+      properties:
+        rating_a_new:
+          type: number
+          format: float
+          description: Player A's new rating after the match
+        drift_a_new:
+          type: number
+          format: float
+          description: Player A's new drift after the match
+        rating_b_new:
+          type: number
+          format: float
+          description: Player B's new rating after the match
+        drift_b_new:
+          type: number
+          format: float
+          description: Player B's new drift after the match
+        win_prob:
+          type: number
+          format: float
+          description: Probability that Player A wins the match
+    TopDefeated:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: Timestamp when this opponent was defeated
+        id:
+          type: integer
+          format: int64
+          description: ID of the defeated opponent
+        name:
+          type: string
+          description: Name of the defeated opponent
+        char_short:
+          type: string
+          description: Character used by the defeated opponent
+        value:
+          type: number
+          format: float
+          description: Rating of the defeated opponent at the time
+        deviation:
+          type: number
+          format: float
+          description: Rating deviation of the defeated opponent
+    TopRating:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          description: Timestamp when this rating was achieved
+        value:
+          type: number
+          format: float
+          description: The top rating value achieved
+        deviation:
+          type: number
+          format: float
+          description: Rating deviation at the time of top rating

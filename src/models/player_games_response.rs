@@ -16,12 +16,16 @@ pub struct PlayerGamesResponse {
     /// Player's match history
     #[serde(rename = "history", skip_serializing_if = "Option::is_none")]
     pub history: Option<Vec<models::PlayerSet>>,
+    /// Player tags indexed by player ID
+    #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
+    pub tags: Option<std::collections::HashMap<String, Vec<models::TagResponse>>>,
 }
 
 impl PlayerGamesResponse {
     pub fn new() -> PlayerGamesResponse {
         PlayerGamesResponse {
             history: None,
+            tags: None,
         }
     }
 }

@@ -34,6 +34,9 @@ pub struct PlayerRankResponse {
     /// Full name of the character
     #[serde(rename = "char_long", skip_serializing_if = "Option::is_none")]
     pub char_long: Option<String>,
+    /// Player's tags (awards, titles, etc.)
+    #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
+    pub tags: Option<Vec<models::TagResponse>>,
 }
 
 impl PlayerRankResponse {
@@ -46,6 +49,7 @@ impl PlayerRankResponse {
             deviation: None,
             char_short: None,
             char_long: None,
+            tags: None,
         }
     }
 }

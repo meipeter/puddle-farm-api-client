@@ -1,11 +1,11 @@
-# PlayerGamesResponse
+# DistributionResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**history** | Option<[**Vec<models::PlayerSet>**](PlayerSet.md)> | Player's match history | [optional]
-**tags** | Option<[**std::collections::HashMap<String, Vec<models::TagResponse>>**](Vec.md)> | Player tags indexed by player ID | [optional]
+**timestamp** | Option<**String**> | Timestamp of the distribution data | [optional]
+**data** | Option<[**models::DistributionEntry**](DistributionEntry.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

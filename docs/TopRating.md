@@ -1,11 +1,12 @@
-# PlayerGamesResponse
+# TopRating
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**history** | Option<[**Vec<models::PlayerSet>**](PlayerSet.md)> | Player's match history | [optional]
-**tags** | Option<[**std::collections::HashMap<String, Vec<models::TagResponse>>**](Vec.md)> | Player tags indexed by player ID | [optional]
+**timestamp** | Option<**String**> | Timestamp when this rating was achieved | [optional]
+**value** | Option<**f32**> | The top rating value achieved | [optional]
+**deviation** | Option<**f32**> | Rating deviation at the time of top rating | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

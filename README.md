@@ -27,16 +27,20 @@ All URIs are relative to *https://puddle.farm/api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DefaultApi* | [**alias_player_id_get**](docs/DefaultApi.md#alias_player_id_get) | **GET** /alias/{player_id} | Get player's aliases
+*DefaultApi* | [**avatar_player_id_get**](docs/DefaultApi.md#avatar_player_id_get) | **GET** /avatar/{player_id} | Get player's avatar image
+*DefaultApi* | [**calc_rating_get**](docs/DefaultApi.md#calc_rating_get) | **GET** /calc_rating | Calculate rating changes for a match
 *DefaultApi* | [**characters_get**](docs/DefaultApi.md#characters_get) | **GET** /characters | Get a list of all characters
 *DefaultApi* | [**claim_player_id_get**](docs/DefaultApi.md#claim_player_id_get) | **GET** /claim/{player_id} | Initiate a claim for a player's profile
 *DefaultApi* | [**claim_poll_player_id_get**](docs/DefaultApi.md#claim_poll_player_id_get) | **GET** /claim/poll/{player_id} | Poll for the status of a player's profile claim
+*DefaultApi* | [**distribution_get**](docs/DefaultApi.md#distribution_get) | **GET** /distribution | Get player rating distribution data
+*DefaultApi* | [**health_get**](docs/DefaultApi.md#health_get) | **GET** /health | Get health status of the system
 *DefaultApi* | [**matchups_get**](docs/DefaultApi.md#matchups_get) | **GET** /matchups | Get character matchup data
-*DefaultApi* | [**matchups_player_id_char_id_get**](docs/DefaultApi.md#matchups_player_id_char_id_get) | **GET** /matchups/{player_id}/{char_id} | Get player's character matchup data
+*DefaultApi* | [**matchups_player_id_char_id_duration_get**](docs/DefaultApi.md#matchups_player_id_char_id_duration_get) | **GET** /matchups/{player_id}/{char_id}/{duration} | Get player's character matchup data
 *DefaultApi* | [**player_id_get**](docs/DefaultApi.md#player_id_get) | **GET** /player/{id} | Get player by ID
 *DefaultApi* | [**player_player_id_char_id_history_get**](docs/DefaultApi.md#player_player_id_char_id_history_get) | **GET** /player/{player_id}/{char_id}/history | Get player's match history for a specific character
 *DefaultApi* | [**player_search_get**](docs/DefaultApi.md#player_search_get) | **GET** /player/search | Search for players by name
 *DefaultApi* | [**popularity_get**](docs/DefaultApi.md#popularity_get) | **GET** /popularity | Get character popularity data
-*DefaultApi* | [**ratings_player_id_char_id_get**](docs/DefaultApi.md#ratings_player_id_char_id_get) | **GET** /ratings/{player_id}/{char_id} | Get player's rating history for a specific character
+*DefaultApi* | [**ratings_player_id_char_id_duration_get**](docs/DefaultApi.md#ratings_player_id_char_id_duration_get) | **GET** /ratings/{player_id}/{char_id}/{duration} | Get player's rating history for a specific character
 *DefaultApi* | [**settings_key_get**](docs/DefaultApi.md#settings_key_get) | **GET** /settings/{key} | Get player's settings
 *DefaultApi* | [**stats_get**](docs/DefaultApi.md#stats_get) | **GET** /stats | Get global statistics
 *DefaultApi* | [**supporters_get**](docs/DefaultApi.md#supporters_get) | **GET** /supporters | Get list of supporters
@@ -47,6 +51,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [CalcRatingResponse](docs/CalcRatingResponse.md)
+ - [DistributionEntry](docs/DistributionEntry.md)
+ - [DistributionResponse](docs/DistributionResponse.md)
  - [MatchupCharResponse](docs/MatchupCharResponse.md)
  - [MatchupEntry](docs/MatchupEntry.md)
  - [MatchupResponse](docs/MatchupResponse.md)
@@ -65,6 +72,8 @@ Class | Method | HTTP request | Description
  - [StatsResponse](docs/StatsResponse.md)
  - [Supporter](docs/Supporter.md)
  - [TagResponse](docs/TagResponse.md)
+ - [TopDefeated](docs/TopDefeated.md)
+ - [TopRating](docs/TopRating.md)
 
 
 To get access to the crate's generated documentation, use:

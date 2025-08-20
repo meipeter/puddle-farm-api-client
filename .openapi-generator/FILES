@@ -2,7 +2,10 @@
 .travis.yml
 Cargo.toml
 README.md
+docs/CalcRatingResponse.md
 docs/DefaultApi.md
+docs/DistributionEntry.md
+docs/DistributionResponse.md
 docs/MatchupCharResponse.md
 docs/MatchupEntry.md
 docs/MatchupResponse.md
@@ -21,11 +24,16 @@ docs/SettingsResponse.md
 docs/StatsResponse.md
 docs/Supporter.md
 docs/TagResponse.md
+docs/TopDefeated.md
+docs/TopRating.md
 git_push.sh
 src/apis/configuration.rs
 src/apis/default_api.rs
 src/apis/mod.rs
 src/lib.rs
+src/models/calc_rating_response.rs
+src/models/distribution_entry.rs
+src/models/distribution_response.rs
 src/models/matchup_char_response.rs
 src/models/matchup_entry.rs
 src/models/matchup_response.rs
@@ -45,3 +53,5 @@ src/models/settings_response.rs
 src/models/stats_response.rs
 src/models/supporter.rs
 src/models/tag_response.rs
+src/models/top_defeated.rs
+src/models/top_rating.rs

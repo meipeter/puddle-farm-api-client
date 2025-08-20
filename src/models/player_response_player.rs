@@ -31,6 +31,10 @@ pub struct PlayerResponsePlayer {
     /// Player's top rank for the character
     #[serde(rename = "top_char", skip_serializing_if = "Option::is_none")]
     pub top_char: Option<i32>,
+    #[serde(rename = "top_defeated", skip_serializing_if = "Option::is_none")]
+    pub top_defeated: Option<Box<models::TopDefeated>>,
+    #[serde(rename = "top_rating", skip_serializing_if = "Option::is_none")]
+    pub top_rating: Option<Box<models::TopRating>>,
 }
 
 impl PlayerResponsePlayer {
@@ -42,6 +46,8 @@ impl PlayerResponsePlayer {
             character: None,
             match_count: None,
             top_char: None,
+            top_defeated: None,
+            top_rating: None,
         }
     }
 }

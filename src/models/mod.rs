@@ -1,3 +1,9 @@
+pub mod calc_rating_response;
+pub use self::calc_rating_response::CalcRatingResponse;
+pub mod distribution_entry;
+pub use self::distribution_entry::DistributionEntry;
+pub mod distribution_response;
+pub use self::distribution_response::DistributionResponse;
 pub mod matchup_char_response;
 pub use self::matchup_char_response::MatchupCharResponse;
 pub mod matchup_entry;
@@ -34,3 +40,7 @@ pub mod supporter;
 pub use self::supporter::Supporter;
 pub mod tag_response;
 pub use self::tag_response::TagResponse;
+pub mod top_defeated;
+pub use self::top_defeated::TopDefeated;
+pub mod top_rating;
+pub use self::top_rating::TopRating;

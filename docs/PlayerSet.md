@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **floor** | Option<**String**> | Floor of the match (e.g., \"Celestial\") | [optional]
 **opponent_name** | Option<**String**> | Opponent's name | [optional]
 **opponent_platform** | Option<**String**> | Opponent's platform (PS, XB, PC) | [optional]
-**opponent_id** | Option<**String**> | Opponent's ID | [optional]
+**opponent_id** | Option<**i64**> | Opponent's ID | [optional]
 **opponent_character** | Option<**String**> | Opponent's character (full name) | [optional]
 **opponent_character_short** | Option<**String**> | Opponent's character (short name) | [optional]
 **opponent_rating_value** | Option<**f32**> | Opponent's rating value at the time of the match | [optional]

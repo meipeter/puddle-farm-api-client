@@ -8,7 +8,7 @@ use tokio;
 async fn main() {
     println!(
         "{}",
-        to_string_pretty(&top_get(&Configuration::new()).await.unwrap()).unwrap()
+        to_string_pretty(&top_get(&Configuration::new(), None, None).await.unwrap()).unwrap()
     );
 
     // println!(

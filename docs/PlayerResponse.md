@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **platform** | Option<**String**> | Player's platform (PS, XB, PC) | [optional]
 **status** | Option<**String**> | Player's status (Public, Private, Cheater) | [optional]
 **top_global** | Option<**i32**> | Player's top global rank | [optional]
+**tags** | Option<[**Vec<models::TagResponse>**](TagResponse.md)> | Player's tags (awards, titles, etc.) | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

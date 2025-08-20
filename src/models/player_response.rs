@@ -31,6 +31,9 @@ pub struct PlayerResponse {
     /// Player's top global rank
     #[serde(rename = "top_global", skip_serializing_if = "Option::is_none")]
     pub top_global: Option<i32>,
+    /// Player's tags (awards, titles, etc.)
+    #[serde(rename = "tags", skip_serializing_if = "Option::is_none")]
+    pub tags: Option<Vec<models::TagResponse>>,
 }
 
 impl PlayerResponse {
@@ -42,6 +45,7 @@ impl PlayerResponse {
             platform: None,
             status: None,
             top_global: None,
+            tags: None,
         }
     }
 }

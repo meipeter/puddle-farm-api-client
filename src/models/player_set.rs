@@ -33,7 +33,7 @@ pub struct PlayerSet {
     pub opponent_platform: Option<String>,
     /// Opponent's ID
     #[serde(rename = "opponent_id", skip_serializing_if = "Option::is_none")]
-    pub opponent_id: Option<String>,
+    pub opponent_id: Option<i64>,
     /// Opponent's character (full name)
     #[serde(rename = "opponent_character", skip_serializing_if = "Option::is_none")]
     pub opponent_character: Option<String>,
